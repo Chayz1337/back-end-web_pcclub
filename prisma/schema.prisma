@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model admins {
+  id_admins Int      @id
+  full_name String   @db.VarChar(255)
+  telephone String   @db.Char(255)
+  email     String   @db.VarChar(255)
+  visitid   Int
+  visits    visits[]
+}
+
+model computers {
+  id_computers         Int       @id
+  specifications       String    @db.VarChar(255)
+  date_of_last_service DateTime? @db.Date
+  halls_id_halls       Int
+  halls                halls     @relation(fields: [halls_id_halls], references: [id_halls], onDelete: NoAction, onUpdate: NoAction, map: "fk_computers_halls1")
+  visits               visits[]
+
+  @@index([halls_id_halls], map: "fk_computers_halls1_idx")
+}
+
+model halls {
+  id_halls  Int         @id @unique(map: "id_halls_UNIQUE")
+  name      String      @db.VarChar(45)
+  computers computers[]
+}
+
+model services {
+  id_service    Int      @id @unique(map: "id_service_UNIQUE")
+  name          String   @db.VarChar(255)
+  price_on_hour Decimal  @db.Decimal(19, 2)
+  visits        visits[]
+}
+
+model visitors {
+  id_visitors Int       @id @unique(map: "id_visitors_UNIQUE")
+  full_name   String    @db.VarChar(255)
+  birthday    DateTime? @db.Date
+  constancy   String    @db.VarChar(255)
+  visits      visits[]
+}
+
+model visits {
+  id_visits              Int       @id
+  data                   DateTime  @db.Date
+  time                   DateTime  @db.Time(0)
+  computer               Int
+  adminsid               Int
+  computersid            Int
+  visitors_id_visitors   Int
+  admins_id_admins       Int
+  computers_id_computers Int
+  services_id_service    Int
+  admins                 admins    @relation(fields: [admins_id_admins], references: [id_admins], map: "fk_visits_admins1")
+  computers              computers @relation(fields: [computers_id_computers], references: [id_computers], map: "fk_visits_computers1")
+  services               services  @relation(fields: [services_id_service], references: [id_service], map: "fk_visits_services1")
+  visitors               visitors  @relation(fields: [visitors_id_visitors], references: [id_visitors], map: "fk_visits_visitors1")
+
+  @@index([admins_id_admins], map: "fk_visits_admins1_idx")
+  @@index([computers_id_computers], map: "fk_visits_computers1_idx")
+  @@index([services_id_service], map: "fk_visits_services1_idx")
+  @@index([visitors_id_visitors], map: "fk_visits_visitors1_idx")
+}
