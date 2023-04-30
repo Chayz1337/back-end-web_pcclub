@@ -8,7 +8,7 @@ datasource db {
 }
 
 model admins {
-  id_admins Int      @id
+  id_admins Int      @id @default(autoincrement())
   full_name String   @db.VarChar(255)
   telephone String   @db.Char(255)
   email     String   @db.VarChar(255)
@@ -17,7 +17,7 @@ model admins {
 }
 
 model computers {
-  id_computers         Int       @id
+  id_computers         Int       @id @default(autoincrement())
   specifications       String    @db.VarChar(255)
   date_of_last_service DateTime? @db.Date
   halls_id_halls       Int
@@ -28,20 +28,20 @@ model computers {
 }
 
 model halls {
-  id_halls  Int         @id @unique(map: "id_halls_UNIQUE")
+  id_halls  Int         @id @unique(map: "id_halls_UNIQUE") @default(autoincrement())
   name      String      @db.VarChar(45)
   computers computers[]
 }
 
 model services {
-  id_service    Int      @id @unique(map: "id_service_UNIQUE")
+  id_service    Int      @id @unique(map: "id_service_UNIQUE") @default(autoincrement())
   name          String   @db.VarChar(255)
   price_on_hour Decimal  @db.Decimal(19, 2)
   visits        visits[]
 }
 
 model visitors {
-  id_visitors Int       @id @unique(map: "id_visitors_UNIQUE")
+  id_visitors Int       @id @unique(map: "id_visitors_UNIQUE") @default(autoincrement())
   full_name   String    @db.VarChar(255)
   birthday    DateTime? @db.Date
   constancy   String    @db.VarChar(255)
@@ -49,7 +49,7 @@ model visitors {
 }
 
 model visits {
-  id_visits              Int       @id
+  id_visits              Int       @id @default(autoincrement())
   data                   DateTime  @db.Date
   time                   DateTime  @db.Time(0)
   computer               Int

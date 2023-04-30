@@ -7,28 +7,28 @@ import { PrismaService } from 'src/pclub/prisma/prisma.service';
 export class AdminsService {
   constructor(private prisma: PrismaService) {}
 
-  create(createAdminsDto: CreateAdminsDto) {
-    return this.prisma.admins.create({
-      data: createAdminsDto,
+  async create(CreateAdminsDto: CreateAdminsDto) {
+    return await this.prisma.admins.create({
+      data: {...CreateAdminsDto},
     });
   }
 
   findAll() {
-    return this.prisma.buyer.findMany();
+    return this.prisma.admins.findMany();
   }
 
   findOne(id: number) {
     return this.prisma.admins.findUniqueOrThrow({
       where: {
-        idadmins: id,
+        id_admins: id,
       },
     });
   }
 
-  update(id: number, updateBuyerDto: UpdateAdminsDto) {
+  update(id: number, UpdateAdminsDto: UpdateAdminsDto) {
     return this.prisma.admins.update({
       where: {
-        idadmins: id,
+        id_admins: id,
       },
       data: UpdateAdminsDto,
     });
@@ -37,7 +37,7 @@ export class AdminsService {
   remove(id: number) {
     return this.prisma.admins.delete({
       where: {
-        idadmins: id,
+        id_admins: id,
       },
     });
   }

@@ -1,4 +1,4 @@
-import { IsDate, IsNumber, IsPassportNumber, IsString } from 'class-validator';
+import { IsDate, IsEmail, IsNumber, IsPassportNumber, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 import internal from 'stream';
 
@@ -10,8 +10,10 @@ export class CreateAdminsDto {
     @IsString()
     telephone: string;
 
+    @IsEmail()
     email:string;
 
-    visitid:number[];
+    @IsNumber()
+    visitid:number;
 
 }
