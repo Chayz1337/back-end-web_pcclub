@@ -4,16 +4,15 @@ import internal from 'stream';
 
 export class CreateVisitorsDto {
     
-    @Type(()=> Date)
+
     @IsDate()
-    birhday: Date;
+    @Type(() => Date)
+    birthday: Date;
 
     @IsString()
     full_name: string;
-    
-    constancy:string;
 
-
-    id_visitors:number[];
+    @IsString()
+    constancy: string;
 
 }

@@ -19,7 +19,7 @@ model admins {
 model computers {
   id_computers         Int       @id @default(autoincrement())
   specifications       String    @db.VarChar(255)
-  date_of_last_service DateTime? @db.Date
+  date_of_last_service DateTime? @db.DateTime(0)
   halls_id_halls       Int
   halls                halls     @relation(fields: [halls_id_halls], references: [id_halls], onDelete: NoAction, onUpdate: NoAction, map: "fk_computers_halls1")
   visits               visits[]
