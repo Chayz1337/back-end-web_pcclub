@@ -20,8 +20,8 @@ model computers {
   id_computers         Int       @id @default(autoincrement())
   specifications       String    @db.VarChar(255)
   date_of_last_service DateTime? @db.DateTime(0)
-  halls_id_halls       Int
-  halls                halls     @relation(fields: [halls_id_halls], references: [id_halls], onDelete: NoAction, onUpdate: NoAction, map: "fk_computers_halls1")
+  halls_id_halls       Int?
+  halls                halls?     @relation(fields: [halls_id_halls], references: [id_halls], onDelete: NoAction, onUpdate: NoAction, map: "fk_computers_halls1")
   visits               visits[]
 
   @@index([halls_id_halls], map: "fk_computers_halls1_idx")
@@ -51,18 +51,17 @@ model visitors {
 model visits {
   id_visits              Int       @id @default(autoincrement())
   data                   DateTime  @db.Date
-  time                   DateTime  @db.Time(0)
   computer               Int
   adminsid               Int
   computersid            Int
-  visitors_id_visitors   Int
-  admins_id_admins       Int
-  computers_id_computers Int
-  services_id_service    Int
-  admins                 admins    @relation(fields: [admins_id_admins], references: [id_admins], map: "fk_visits_admins1")
-  computers              computers @relation(fields: [computers_id_computers], references: [id_computers], map: "fk_visits_computers1")
-  services               services  @relation(fields: [services_id_service], references: [id_service], map: "fk_visits_services1")
-  visitors               visitors  @relation(fields: [visitors_id_visitors], references: [id_visitors], map: "fk_visits_visitors1")
+  visitors_id_visitors   Int?
+  admins_id_admins       Int?
+  computers_id_computers Int?
+  services_id_service    Int?
+  admins                 admins?    @relation(fields: [admins_id_admins], references: [id_admins], map: "fk_visits_admins1")
+  computers              computers? @relation(fields: [computers_id_computers], references: [id_computers], map: "fk_visits_computers1")
+  services               services?  @relation(fields: [services_id_service], references: [id_service], map: "fk_visits_services1")
+  visitors               visitors?  @relation(fields: [visitors_id_visitors], references: [id_visitors], map: "fk_visits_visitors1")
 
   @@index([admins_id_admins], map: "fk_visits_admins1_idx")
   @@index([computers_id_computers], map: "fk_visits_computers1_idx")

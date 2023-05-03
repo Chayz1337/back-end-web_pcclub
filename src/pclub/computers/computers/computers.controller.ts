@@ -18,17 +18,17 @@ export class ComputersController {
   }
 
   @Get(':id')
-  async getId(@Param('id') idClient: string) {
-    return this.computersService.findOne(+idClient)
+  async getId(@Param('id') id_computers: string) {
+    return this.computersService.findOne(+id_computers)
   }
 
   @Put(':id')
-  async update(@Param('id') idClient: string, @Body() dto: CreateComputersDto) {
-    return this.computersService.update(+idClient, dto)
+  async update(@Param('id') id_computers: string, @Body() dto: CreateComputersDto) {
+    return this.computersService.update(+id_computers, dto)
   }
 
   @Delete(':id')
-  async delete(@Param('id') idClient: string) {
-    return this.computersService.remove(+idClient)
+  async delete(@Param('id') id_computers: string) {
+    return this.computersService.remove(+id_computers)
   }
 }

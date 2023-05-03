@@ -9,9 +9,10 @@ import { PclubModule } from './pclub/pclub.module';
 import { PrismaService } from './pclub/prisma/prisma.service';
 import { ServicesModule } from './pclub/services/services.module';
 import { VisitorsModule } from './pclub/visitors/visitors.module';
+import { VisitsModule } from './pclub/visits/visits.module';
 
 @Module({
-  imports: [AdminsModule, ComputersModule, HallsModule, ServicesModule, VisitorsModule],
+  imports: [AdminsModule, ComputersModule, HallsModule, ServicesModule, VisitorsModule, VisitsModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

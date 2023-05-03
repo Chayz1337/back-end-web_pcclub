@@ -18,18 +18,18 @@ export class ServicesController {
   }
 
   @Get(':id')
-  async getId(@Param('id') idClient: string) {
-    return this.servicesService.findOne(+idClient)
+  async getId(@Param('id') id_service: string) {
+    return this.servicesService.findOne(+id_service)
   }
 
   @Put(':id')
-  async update(@Param('id') idClient: string, @Body() dto: CreateServicesDto) {
-    return this.servicesService.update(+idClient, dto)
+  async update(@Param('id') id_service: string, @Body() dto: CreateServicesDto) {
+    return this.servicesService.update(+id_service, dto)
   }
 
   @Delete(':id')
-  async delete(@Param('id') idClient: string) {
-    return this.servicesService.remove(+idClient)
+  async delete(@Param('id') id_service: string) {
+    return this.servicesService.remove(+id_service)
   }
 }
 

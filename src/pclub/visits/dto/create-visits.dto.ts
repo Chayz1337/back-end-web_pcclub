@@ -2,30 +2,19 @@ import { IsDate, IsNumber, IsPassportNumber, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 import internal from 'stream';
 
-export class CreateVisitsDto {
+export class VisitsDto {
 
     @Type(()=> Date)
     @IsDate()
     data: Date;
 
-    @IsString()     
+    @IsNumber()
     computer: number;
 
-    time:number;
+    @IsNumber()
+    adminsid: number;
 
-    adminsid:number;
-
-    @IsString()
-    name: string;
-
-    id_visits:number[];
-
-    visitors_id_visitors:number[];
-
-    admins_id_admins:number[];
-
-    computers_id_computers:number[];
-
-    service_id_service:number[];
+    @IsNumber()
+    computersid: number;
 
 }

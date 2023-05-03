@@ -18,18 +18,18 @@ export class HallsController {
   }
 
   @Get(':id')
-  async getId(@Param('id') idClient: string) {
-    return this.hallsService.findOne(+idClient)
+  async getId(@Param('id') id_halls: string) {
+    return this.hallsService.findOne(+id_halls)
   }
 
   @Put(':id')
-  async update(@Param('id') idClient: string, @Body() dto: CreateHallsDto) {
-    return this.hallsService.update(+idClient, dto)
+  async update(@Param('id') id_halls: string, @Body() dto: CreateHallsDto) {
+    return this.hallsService.update(+id_halls, dto)
   }
 
   @Delete(':id')
-  async delete(@Param('id') idClient: string) {
-    return this.hallsService.remove(+idClient)
+  async delete(@Param('id') id_halls: string) {
+    return this.hallsService.remove(+id_halls)
   }
 }
 

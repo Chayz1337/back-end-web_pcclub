@@ -18,18 +18,18 @@ export class VisitorsController {
   }
 
   @Get(':id')
-  async getId(@Param('id') idClient: string) {
-    return this.visitorsService.findOne(+idClient)
+  async getId(@Param('id') id_visitors: string) {
+    return this.visitorsService.findOne(+id_visitors)
   }
 
   @Put(':id')
-  async update(@Param('id') idClient: string, @Body() dto: CreateVisitorsDto) {
-    return this.visitorsService.update(+idClient, dto)
+  async update(@Param('id') id_visitors: string, @Body() dto: CreateVisitorsDto) {
+    return this.visitorsService.update(+id_visitors, dto)
   }
 
   @Delete(':id')
-  async delete(@Param('id') idClient: string) {
-    return this.visitorsService.remove(+idClient)
+  async delete(@Param('id') id_visitors: string) {
+    return this.visitorsService.remove(+id_visitors)
   }
 }
 

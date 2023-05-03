@@ -18,17 +18,17 @@ export class AdminsController {
   }
 
   @Get(':id')
-  async getId(@Param('id') idClient: string) {
-    return this.adminsService.findOne(+idClient)
+  async getId(@Param('id') id_admins: string) {
+    return this.adminsService.findOne(+id_admins)
   }
 
   @Put(':id')
-  async update(@Param('id') idClient: string, @Body() dto: CreateAdminsDto) {
-    return this.adminsService.update(+idClient, dto)
+  async update(@Param('id') id_admins: string, @Body() dto: CreateAdminsDto) {
+    return this.adminsService.update(+id_admins, dto)
   }
 
   @Delete(':id')
-  async delete(@Param('id') idClient: string) {
-    return this.adminsService.remove(+idClient)
+  async delete(@Param('id') id_admins: string) {
+    return this.adminsService.remove(+id_admins)
   }
 }
