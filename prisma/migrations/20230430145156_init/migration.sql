@@ -4,7 +4,6 @@ CREATE TABLE `admins` (
     `full_name` VARCHAR(255) NOT NULL,
     `telephone` CHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
-    `visitid` INTEGER NOT NULL,
 
     PRIMARY KEY (`id_admins`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

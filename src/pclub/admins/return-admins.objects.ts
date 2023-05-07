@@ -5,5 +5,4 @@ export const returnClient: Prisma.adminsSelect = {
   full_name: true,
   telephone: true,
   email: true,
-  visitid: true
 }

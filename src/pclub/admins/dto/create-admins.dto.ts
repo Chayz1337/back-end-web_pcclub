@@ -12,8 +12,4 @@ export class CreateAdminsDto {
 
     @IsEmail()
     email:string;
-
-    @IsNumber()
-    visitid:number;
-
 }

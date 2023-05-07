@@ -11,8 +11,7 @@ model admins {
   id_admins Int      @id @default(autoincrement())
   full_name String   @db.VarChar(255)
   telephone String   @db.Char(255)
-  email     String   @db.VarChar(255)
-  visitid   Int
+  email     String   @db.VarChar(255)     
   visits    visits[]
 }
 

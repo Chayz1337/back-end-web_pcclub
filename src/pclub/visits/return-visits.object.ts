@@ -27,7 +27,6 @@ export const returnVisits: Prisma.visitsSelect = {
       full_name: true,
       telephone: true,
       email: true,
-      visitid: true
     }
   },
   computers:{
