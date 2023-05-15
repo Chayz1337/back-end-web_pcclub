@@ -1,6 +1,4 @@
-import { IsDate, IsEmail, IsNumber, IsPassportNumber, IsString } from 'class-validator';
-import { Type } from 'class-transformer';
-import internal from 'stream';
+import {IsEmail, IsString } from 'class-validator';
 
 export class CreateAdminsDto {
     

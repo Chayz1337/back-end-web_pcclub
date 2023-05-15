@@ -5,7 +5,9 @@ import { PrismaService } from 'src/pclub/prisma/prisma.service';
 
 @Injectable()
 export class AdminsService {
+  [x: string]: any;
   constructor(private prisma: PrismaService) {}
+  
 
   async create(CreateAdminsDto: CreateAdminsDto) {
     return await this.prisma.admins.create({

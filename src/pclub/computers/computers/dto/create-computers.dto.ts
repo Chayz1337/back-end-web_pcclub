@@ -1,4 +1,4 @@
-import { IsDate, IsNumber, IsPassportNumber, IsString } from 'class-validator';
+import { IsDate, IsInt, IsNumber, IsPassportNumber, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 import internal from 'stream';
 
@@ -11,7 +11,8 @@ export class CreateComputersDto {
     @IsDate()
     date_of_last_service: Date;
 
-    @IsNumber()
+    @IsInt()
+    @Type(() => Number)
     halls_id_halls: number;
 
 }
